@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="pl.polsl.marurb.geoLocApp" >
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="pl.polsl.marurb.geoLocApp.Splash"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="pl.polsl.marurb.geoLocApp.activities.NoInternetActivity"
+            android:label="@string/title_activity_no_internet"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="pl.polsl.marurb.geoLocApp.activities.NoGpsActivity"
+            android:label="@string/title_activity_no_gps"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="pl.polsl.marurb.geoLocApp.activities.RulesActivity"
+            android:label="@string/title_activity_rules"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="pl.polsl.marurb.geoLocApp.activities.GameActivity"
+            android:label="@string/title_activity_game"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="pl.polsl.marurb.geoLocApp.activities.MessengerActivity"
+            android:label="@string/title_activity_messenger"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="pl.polsl.marurb.geoLocApp.helpers.BaseActivity"
+            android:label="@string/title_activity_base"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="pl.polsl.marurb.geoLocApp.activities.login.MainLoginActivity"
+            android:label="@string/title_activity_main_login"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="pl.polsl.marurb.geoLocApp.activities.login.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="pl.polsl.marurb.geoLocApp.activities.login.RegistryActivity"
+            android:label="@string/title_activity_registry"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="pl.polsl.marurb.geoLocApp.activities.login.RemindActivity"
+            android:label="@string/title_activity_remind"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="pl.polsl.marurb.geoLocApp.activities.login.NoUserActivity"
+            android:label="@string/title_activity_no_user"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="pl.polsl.marurb.geoLocApp.activities.login.UserInfoActivity"
+            android:label="@string/title_activity_user_info"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="pl.polsl.marurb.geoLocApp.activities.StartGameActivity"
+            android:label="@string/title_activity_start_game"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="pl.polsl.marurb.geoLocApp.activities.TaskActivity"
+            android:label="@string/title_activity_task"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="pl.polsl.marurb.geoLocApp.activities.taskInfoActivity"
+            android:label="@string/title_activity_task_info"
+            android:screenOrientation="portrait">
+        </activity>
+    </application>
+
+</manifest>

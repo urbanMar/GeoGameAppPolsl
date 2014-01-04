@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">InżProjGeoLocalApp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Rules</string>
+    <string name="title_activity_no_internet">Warning</string>
+    <string name="title_activity_no_gps">Warning</string>
+    <string name="title_activity_rules">Rules</string>
+    <string name="title_activity_game">Game</string>
+    <string name="title_activity_messenger">Messenger</string>
+    <string name="title_activity_base"></string>
+    <string name="noInternet">No Internet</string>
+    <string name="noGps">Your GPS seems to be disabled, do you want to enable it?</string>
+    <string name="yes">Yest</string>
+    <string name="no">No</string>
+    <string name="title_activity_main_login">Welcome in game</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_registry">Registration</string>
+    <string name="title_activity_remind">Remind password</string>
+    <string name="title_activity_no_user">No such user</string>
+    <string name="title_activity_user_info">Informations</string>
+    <string name="title_activity_start_game">Ready?</string>
+    <string name="title_activity_task">Your task</string>
+    <string name="title_activity_task_info">Current task informations</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="confirm">Confirm</string>
+    <string name="registration_error">Matching error</string>
+    <string name="send">Send</string>
+    <string name="empty_mail">Setup mail to send new password</string>
+    <string name="user_mail">E-mail:</string>
+    <string name="login">Login</string>
+
+
+</resources>
