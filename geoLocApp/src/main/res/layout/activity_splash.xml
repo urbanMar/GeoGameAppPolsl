@@ -5,3 +5,4 @@
     android:layout_height="match_parent"
     tools:context="pl.polsl.marurb.geoLocApp.Splash"
     tools:ignore="MergeRootFrame" />
+

@@ -36,6 +36,7 @@
         android:layout_height="wrap_content"
         android:text="Login"
         android:id="@+id/sendLoginButton"
+        android:background="@drawable/button_background"
         android:layout_below="@+id/passTeaxtView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="56dp"

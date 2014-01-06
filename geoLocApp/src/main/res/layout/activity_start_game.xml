@@ -6,6 +6,7 @@
     tools:context="pl.polsl.marurb.geoLocApp.activities.StartGameActivity"
     tools:ignore="MergeRootFrame" >
 
+
     <include
         android:id="@+id/headerInclude"
         layout="@layout/top_header"/>

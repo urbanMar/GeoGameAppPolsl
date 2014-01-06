@@ -26,6 +26,7 @@
         android:text="@string/send"
         android:id="@+id/remindButton"
         android:layout_marginTop="25dp"
+        android:background="@drawable/button_background"
         android:onClick="remind"
         android:layout_below="@+id/emailRemindEditText"
         android:layout_centerHorizontal="true" />

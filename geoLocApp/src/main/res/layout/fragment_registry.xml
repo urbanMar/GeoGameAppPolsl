@@ -59,6 +59,7 @@
         android:text="@string/confirm"
         android:id="@+id/registerButton"
         android:layout_below="@+id/pass2EditText"
+        android:background="@drawable/button_background"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp"
         android:onClick="remind" />

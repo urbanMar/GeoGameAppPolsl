@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="orange_header_background">#F39800</color>
+    <color name="blue_header">#006BB5</color>
+    <color name="orange_header_title">#F3C000</color>
+
+</resources>

@@ -36,6 +36,8 @@
     <string name="task_name">Task name:</string>
     <string name="task_desc">Task description:</string>
     <string name="answer">Answer</string>
+    <string name="received">Task is received</string>
+    <string name="server_problem">Server problems</string>
 
 
 </resources>

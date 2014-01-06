@@ -1,17 +1,13 @@
 package pl.polsl.marurb.geoLocApp.activities.login;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import pl.polsl.marurb.geoLocApp.R;
 import pl.polsl.marurb.geoLocApp.helpers.BaseActivity;
@@ -37,21 +33,11 @@ public class MainLoginActivity extends BaseActivity{
     }
 
     public void decorationDesigner(){
-        Button messengerButton;
-        Button infoButton;
-        Button userButton;
-        TextView headerTextView;
-
-        messengerButton =(Button) findViewById(R.id.messengerButton);
-        infoButton = (Button) findViewById(R.id.infoButton);
-        headerTextView = (TextView) findViewById(R.id.headerNameTextView);
-        userButton = (Button) findViewById(R.id.loginButton);
-
-        headerTextView.setTextColor(Color.WHITE);
+        super.decorationDesigner();
         headerTextView.setText(getText(R.string.title_activity_main_login));
-        messengerButton.setVisibility(View.GONE);
-        infoButton.setVisibility(View.GONE);
-        userButton.setVisibility(View.GONE);
+        headerMessengerButton.setVisibility(View.GONE);
+        headerInfoButton.setVisibility(View.GONE);
+        headerUserButton.setVisibility(View.GONE);
     }
 
 

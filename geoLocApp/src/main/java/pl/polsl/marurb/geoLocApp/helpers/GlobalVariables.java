@@ -84,4 +84,8 @@ public class GlobalVariables {
         return getBaseUserUrl() + userEdit.replace("[USER_MAIL]", user.getMail());
     }
 
+    public static String getTaskInfo() {
+        return getBaseUserUrl() + taskStart.replace("[USER_MAIL]", user.getMail());
+    }
+
 }

@@ -23,6 +23,8 @@ import android.widget.Toast;
 
 import pl.polsl.marurb.geoLocApp.R;
 import pl.polsl.marurb.geoLocApp.helpers.BaseActivity;
+import pl.polsl.marurb.geoLocApp.helpers.GlobalVariables;
+import pl.polsl.marurb.geoLocApp.items.Task;
 
 import static android.widget.Toast.LENGTH_LONG;
 
@@ -71,8 +73,10 @@ public class GameActivity extends BaseActivity implements SensorEventListener, L
 
         desiredLocation = new Location(LocationManager.GPS_PROVIDER);
 
-        desiredLocation.setLatitude(50.2736);
-        desiredLocation.setLongitude(19.0248);
+        Task task = GlobalVariables.getTask();
+
+        desiredLocation.setLatitude(Double.parseDouble(task.getLatitude()));
+        desiredLocation.setLongitude(Double.parseDouble(task.getLongitude()));
 
         LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
         boolean enabled = service.isProviderEnabled(LocationManager.GPS_PROVIDER);
@@ -87,8 +91,15 @@ public class GameActivity extends BaseActivity implements SensorEventListener, L
         mSensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
         Sensor mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
         mSensorManager.registerListener(this, mSensor,SensorManager.SENSOR_DELAY_GAME);
+
+        decorationDesigner();
     }
 
+    @Override
+    public void decorationDesigner() {
+        super.decorationDesigner();
+        headerTextView.setText(getString(R.string.title_activity_game));
+    }
 
 
 
