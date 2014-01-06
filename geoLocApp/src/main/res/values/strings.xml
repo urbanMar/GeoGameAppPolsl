@@ -19,7 +19,7 @@
     <string name="title_activity_registry">Registration</string>
     <string name="title_activity_remind">Remind password</string>
     <string name="title_activity_no_user">No such user</string>
-    <string name="title_activity_user_info">Informations</string>
+    <string name="title_activity_user_info">User informations</string>
     <string name="title_activity_start_game">Ready?</string>
     <string name="title_activity_task">Your task</string>
     <string name="title_activity_task_info">Current task informations</string>
@@ -31,6 +31,11 @@
     <string name="empty_mail">Setup mail to send new password</string>
     <string name="user_mail">E-mail:</string>
     <string name="login">Login</string>
+    <string name="logout">Logout and exit</string>
+    <string name="loin_name">Login:</string>
+    <string name="task_name">Task name:</string>
+    <string name="task_desc">Task description:</string>
+    <string name="answer">Answer</string>
 
 
 </resources>

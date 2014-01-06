@@ -1,7 +1,5 @@
 package pl.polsl.marurb.geoLocApp.activities;
 
-import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,12 +8,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 
 import pl.polsl.marurb.geoLocApp.R;
 import pl.polsl.marurb.geoLocApp.helpers.BaseActivity;
+import pl.polsl.marurb.geoLocApp.helpers.GlobalVariables;
+import pl.polsl.marurb.geoLocApp.items.Task;
 
 public class StartGameActivity extends BaseActivity {
+
+    Task task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +34,18 @@ public class StartGameActivity extends BaseActivity {
     }
 
     public void startGame(View view){
+        getTask();
+        GlobalVariables.setTask(this.task);
         Intent intent = new Intent(StartGameActivity.this, GameActivity.class);
         startActivity(intent);
 
+    }
+
+    public void getTask(){
+        this.task = new Task();
+        task.setName("Test task");
+        task.setDescription("asdasdasdasdasdasdasd" +
+                "asdasdadasda sdasdasdasd asdasdasd asd as da sd asdd\n sdfsdf");
     }
 
     @Override

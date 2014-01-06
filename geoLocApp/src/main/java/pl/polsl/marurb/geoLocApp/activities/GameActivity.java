@@ -15,14 +15,11 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-
 
 import pl.polsl.marurb.geoLocApp.R;
 import pl.polsl.marurb.geoLocApp.helpers.BaseActivity;
@@ -135,31 +132,31 @@ public class GameActivity extends BaseActivity implements SensorEventListener, L
                     if (bearingRelative <= 22) {
                         arrowIV.setImageBitmap(arrowImgN);
                         arrowIV.setVisibility(View.VISIBLE);
-                        System.out.println("!!! N");
+                        //System.out.println("!!! N");
                     } else if (22 < bearingRelative  && bearingRelative <= 68) {
                         arrowIV.setImageBitmap(arrowImgNE);
                         arrowIV.setVisibility(View.VISIBLE);
-                        System.out.println("!!! NE");
+                        //System.out.println("!!! NE");
                     } else if (68 < bearingRelative && bearingRelative <= 135) {
                         arrowIV.setImageBitmap(arrowImgE);
                         arrowIV.setVisibility(View.VISIBLE);
-                        System.out.println("!!! E");
+                        //System.out.println("!!! E");
                     } else if (138 < bearingRelative && bearingRelative <= 225) {
                         arrowIV.setImageBitmap(arrowImgS);
                         arrowIV.setVisibility(View.VISIBLE);
-                        System.out.println("!!! S");
+                       // System.out.println("!!! S");
                     } else if (225 < bearingRelative && bearingRelative <= 295) {
                         arrowIV.setImageBitmap(arrowImgW);
                         arrowIV.setVisibility(View.VISIBLE);
-                        System.out.println("!!! W");
+                        //System.out.println("!!! W");
                     } else if (295 < bearingRelative && bearingRelative <= 338) {
                         arrowIV.setImageBitmap(arrowImgNW);
                         arrowIV.setVisibility(View.VISIBLE);
-                        System.out.println("!!! NW");
+                        //System.out.println("!!! NW");
                     } else if (338 < bearingRelative) {
                         arrowIV.setImageBitmap(arrowImgN);
                         arrowIV.setVisibility(View.VISIBLE);
-                        System.out.println("!!! N");
+                        //System.out.println("!!! N");
                     }
                 } else {
                     arrowIV.setVisibility(View.INVISIBLE);   //ON PLACE

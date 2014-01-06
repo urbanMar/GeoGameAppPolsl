@@ -12,12 +12,14 @@ public class GlobalVariables {
 
     public static final  String baseUrl = "";
 
-    private static final String userLogin = "/users/login-me/type/1/login/[USER_MAIL]/pass/[USER_PASS]";
+    private static final String userLogin = "/users/login-me/login/[USER_MAIL]/pass/[USER_PASS]";
     private static final String userLogout = "/users/logout-me";
-    private static final String userRegister = "/users/register-me/type/1/login/[USER_LOGIN]/email/[USER_MAIL]/pass/[USER_PASS]";
+    private static final String userRegister = "/users/register-me/login/[USER_LOGIN]/email/[USER_MAIL]/pass/[USER_PASS]";
     private static final String userForgot = "/users/forgot-pass/email/[USER_MAIL]";
-    private static final String userInfo = "/users/get-user-info";
-    private static final String userEdit = "/users/edit-user/";
+    private static final String userInfo = "/users/get-user-info/email/[USER_MAIL]";
+    private static final String userEdit = "/users/edit-user/email/[USER_MAIL]";
+    private static final String taskStart = "/task/start/email/[USER_MAIL]";
+    private static final String taskEnd = "/task/end/email/[USER_MAIL]";
 
     private static User user;
     private static Task task;
@@ -70,15 +72,16 @@ public class GlobalVariables {
 
     public static String getUserInfo() {
 
-        return getBaseUserUrl() + userInfo;
+        return getBaseUserUrl() + userInfo.replace("[USER_MAIL]", user.getMail());
     }
 
-    public static String getUserLogout(String mail) {
-        return getBaseUserUrl() + userLogout;
+    public static String getUserLogout() {
+        return getBaseUserUrl() + userLogout.replace("[USER_MAIL]", user.getMail());
     }
 
 
     public static String getUserEdit() {
-        return getBaseUserUrl() + userEdit;
+        return getBaseUserUrl() + userEdit.replace("[USER_MAIL]", user.getMail());
     }
+
 }

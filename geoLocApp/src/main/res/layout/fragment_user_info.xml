@@ -13,18 +13,50 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/user_mail"
+        android:text="@string/loin_name"
         android:id="@+id/textView"
+        android:layout_marginTop="141dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="160dp" />
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/userMailTextView"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/user_mail"
+        android:id="@+id/textView2"
         android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="26dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/logout"
+        android:id="@+id/logoutButton"
+        android:layout_marginTop="102dp"
+        android:layout_below="@+id/userLoginMailTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp" />
+        android:onClick="logout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/userLoginNameTextView"
+        android:layout_alignTop="@+id/textView"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_marginLeft="42dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/userLoginMailTextView"
+        android:layout_alignTop="@+id/textView2"
+        android:layout_alignLeft="@+id/userLoginNameTextView"
+        android:layout_alignStart="@+id/userLoginNameTextView" />
 </RelativeLayout>

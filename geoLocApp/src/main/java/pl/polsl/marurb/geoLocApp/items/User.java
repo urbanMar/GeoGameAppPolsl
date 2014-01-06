@@ -89,8 +89,12 @@ public class User {
         return isLogged;
     }
 
+    public static JSONObject logout() throws IOException {
+        isLogged = false;
+        return getResponse(GlobalVariables.getUserLogout());
+    }
+
     public static JSONObject login(String mail, String pass) throws IOException {
-        String hash = md5(pass);
         return getResponse(GlobalVariables.getUserLogin(mail, pass));
     }
 

@@ -1,24 +1,25 @@
 package pl.polsl.marurb.geoLocApp.activities.login;
 
-import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.TextView;
+
+import java.io.IOException;
 
 import pl.polsl.marurb.geoLocApp.R;
 import pl.polsl.marurb.geoLocApp.helpers.BaseActivity;
 import pl.polsl.marurb.geoLocApp.helpers.GlobalVariables;
+import pl.polsl.marurb.geoLocApp.items.User;
 
 public class UserInfoActivity extends BaseActivity {
 
+
+    User user = new User();
     TextView mail;
+    TextView login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class UserInfoActivity extends BaseActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+        decorationDesigner();
     }
 
     @Override
@@ -41,8 +43,14 @@ public class UserInfoActivity extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        mail = (TextView) findViewById(R.id.userMailTextView);
+        login = (TextView) findViewById(R.id.userLoginNameTextView);
+        login.setText(GlobalVariables.getUser().getLogin());
+        mail = (TextView) findViewById(R.id.userLoginMailTextView);
         mail.setText(GlobalVariables.getUser().getMail());
+    }
+
+    public void logout(View view) throws IOException {
+        user.logout();
     }
 
     /**

@@ -1,7 +1,5 @@
 package pl.polsl.marurb.geoLocApp.activities;
 
-import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,11 +7,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import pl.polsl.marurb.geoLocApp.R;
+import pl.polsl.marurb.geoLocApp.helpers.BaseActivity;
+import pl.polsl.marurb.geoLocApp.helpers.GlobalVariables;
 
-public class TaskActivity extends Activity {
+public class TaskActivity extends BaseActivity {
+
+    TextView taskName;
+    TextView taskDesc;
+    EditText taskAnswer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +31,27 @@ public class TaskActivity extends Activity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+        decorationDesigner();
     }
 
+
+
+    @Override
+    public void decorationDesigner() {
+        super.decorationDesigner();
+        headerTextView.setText(getText(R.string.title_activity_user_info));
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        taskAnswer = (EditText) findViewById(R.id.taskAnswerEditText);
+        taskDesc = (TextView) findViewById(R.id.taskDescriptionTextView);
+        taskName = (TextView) findViewById(R.id.taskNameTextView);
+
+        taskName.setText(GlobalVariables.getTask().getName());
+        taskDesc.setText(GlobalVariables.getTask().getDescription());
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,6 +75,10 @@ public class TaskActivity extends Activity {
 
     @Override
     public void onBackPressed() {
+    }
+
+    public void send(View view){
+
     }
 
     /**

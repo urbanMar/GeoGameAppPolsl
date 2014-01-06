@@ -1,31 +1,21 @@
 package pl.polsl.marurb.geoLocApp.helpers;
 
 import android.app.Activity;
-import android.app.ActionBar;
-import android.app.AlertDialog;
-import android.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
-import android.location.GpsStatus;
-import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.Button;
 import android.widget.TextView;
 
 import pl.polsl.marurb.geoLocApp.R;
-import pl.polsl.marurb.geoLocApp.activities.NoGpsActivity;
 import pl.polsl.marurb.geoLocApp.activities.NoInternetActivity;
 import pl.polsl.marurb.geoLocApp.activities.login.UserInfoActivity;
 import pl.polsl.marurb.geoLocApp.interfaces.BaseInterface;
@@ -46,6 +36,15 @@ public class BaseActivity extends Activity implements BaseInterface{
         setContentView(R.layout.top_header);
 
         decorationDesigner();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        headerMessengerButton =(Button) findViewById(R.id.messengerButton);
+        headerInfoButton = (Button) findViewById(R.id.infoButton);
+        headerTextView = (TextView) findViewById(R.id.headerNameTextView);
+        headerUserButton = (Button) findViewById(R.id.loginButton);
     }
 
     @Override
