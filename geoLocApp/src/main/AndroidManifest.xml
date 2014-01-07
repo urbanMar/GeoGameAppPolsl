@@ -43,7 +43,8 @@
         <activity
             android:name="pl.polsl.marurb.geoLocApp.activities.MessengerActivity"
             android:label="@string/title_activity_messenger"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize">
         </activity>
         <activity
             android:name="pl.polsl.marurb.geoLocApp.helpers.BaseActivity"
@@ -91,7 +92,7 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="pl.polsl.marurb.geoLocApp.activities.taskInfoActivity"
+            android:name=".activities.TaskInfoActivity"
             android:label="@string/title_activity_task_info"
             android:screenOrientation="portrait">
         </activity>

@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="pl.polsl.marurb.geoLocApp.activities.taskInfoActivity" >
+    tools:context="pl.polsl.marurb.geoLocApp.activities.TaskInfoActivity" >
     
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"

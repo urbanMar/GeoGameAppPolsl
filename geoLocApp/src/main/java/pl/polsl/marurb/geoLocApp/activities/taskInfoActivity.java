@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import pl.polsl.marurb.geoLocApp.R;
 import pl.polsl.marurb.geoLocApp.helpers.BaseActivity;
 
-public class taskInfoActivity extends BaseActivity {
+public class TaskInfoActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

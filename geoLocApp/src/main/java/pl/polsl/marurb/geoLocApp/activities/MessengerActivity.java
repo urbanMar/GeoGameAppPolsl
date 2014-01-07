@@ -1,20 +1,25 @@
 package pl.polsl.marurb.geoLocApp.activities;
 
-import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import pl.polsl.marurb.geoLocApp.R;
 import pl.polsl.marurb.geoLocApp.helpers.BaseActivity;
 
 public class MessengerActivity extends BaseActivity {
+
+    TextView messenger;
+    EditText message;
+    Button send;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +31,23 @@ public class MessengerActivity extends BaseActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+        decorationDesigner();
     }
 
+    @Override
+    public void decorationDesigner() {
+        super.decorationDesigner();
+        headerTextView.setText(getText(R.string.title_activity_messenger));
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        messenger = (TextView) findViewById(R.id.allMessegesTextView);
+        message = (EditText) findViewById(R.id.userMessageEditText);
+        messenger.setMovementMethod(new ScrollingMovementMethod());
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

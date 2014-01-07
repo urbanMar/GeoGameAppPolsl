@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import pl.polsl.marurb.geoLocApp.R;
+import pl.polsl.marurb.geoLocApp.activities.MessengerActivity;
 import pl.polsl.marurb.geoLocApp.activities.NoInternetActivity;
 import pl.polsl.marurb.geoLocApp.activities.login.UserInfoActivity;
 import pl.polsl.marurb.geoLocApp.interfaces.BaseInterface;
@@ -73,7 +74,7 @@ public class BaseActivity extends Activity implements BaseInterface{
         headerMessengerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BaseActivity.this, UserInfoActivity.class);
+                Intent intent = new Intent(BaseActivity.this, MessengerActivity.class);
                 startActivity(intent);
             }
         });
