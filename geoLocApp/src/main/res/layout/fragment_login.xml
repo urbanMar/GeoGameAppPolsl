@@ -17,8 +17,8 @@
         android:id="@+id/mailTextView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="148dp"
-        android:hint="Mail addres" />
+        android:layout_marginTop="220dp"
+        android:hint="Login" />
 
     <EditText
         android:layout_width="wrap_content"

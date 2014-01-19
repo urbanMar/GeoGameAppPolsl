@@ -40,6 +40,26 @@ public class Task {
     private String endDate;
     private String latitude;
     private String longitude;
+    private String currentLatitud;
+    private String currentLongitude;
+
+    public String getCurrentLatitud() {
+        return currentLatitud;
+    }
+
+    public void setCurrentLatitud(String currentLatitud) {
+        this.currentLatitud = currentLatitud;
+    }
+
+    public String getCurrentLongitude() {
+        return currentLongitude;
+    }
+
+    public void setCurrentLongitude(String currentLongitude) {
+        this.currentLongitude = currentLongitude;
+    }
+
+
 
     public String getLatitude() {
         return latitude;

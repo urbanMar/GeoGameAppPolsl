@@ -37,11 +37,11 @@
         android:layout_height="wrap_content"
         android:text="@string/logout"
         android:id="@+id/logoutButton"
-        android:layout_marginTop="102dp"
         android:background="@drawable/button_background"
+        android:onClick="logout"
         android:layout_below="@+id/userLoginMailTextView"
         android:layout_centerHorizontal="true"
-        android:onClick="logout" />
+        android:layout_marginTop="137dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -60,4 +60,25 @@
         android:layout_alignTop="@+id/textView2"
         android:layout_alignLeft="@+id/userLoginNameTextView"
         android:layout_alignStart="@+id/userLoginNameTextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/id"
+        android:id="@+id/textView3"
+        android:layout_above="@+id/userLoginNameTextView"
+        android:layout_marginBottom="26dp"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/userLoginIdTextView"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_alignLeft="@+id/userLoginNameTextView"
+        android:layout_alignStart="@+id/userLoginNameTextView" />
+
 </RelativeLayout>

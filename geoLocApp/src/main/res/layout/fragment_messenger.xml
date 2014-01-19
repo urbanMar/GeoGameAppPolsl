@@ -11,18 +11,19 @@
 
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="250dp"
-        android:text="New Text"
         android:maxLines="500"
         android:scrollbars="vertical"
+        android:isScrollContainer="true"
         android:id="@+id/allMessegesTextView"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="55dp" />
+        android:layout_marginTop="55dp"
+        android:gravity="bottom"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -30,11 +31,20 @@
         android:inputType="textMultiLine"
         android:focusable="true"
         android:id="@+id/userMessageEditText"
-        android:layout_below="@+id/allMessegesTextView"
-        android:layout_alignLeft="@+id/allMessegesTextView"
-        android:layout_alignStart="@+id/allMessegesTextView"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="27dp" />
+        android:layout_marginRight="120dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/allMessegesTextView" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="send"
+        android:id="@+id/sendButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="80dp"
+        android:onClick="send" />
 
 
 </RelativeLayout>

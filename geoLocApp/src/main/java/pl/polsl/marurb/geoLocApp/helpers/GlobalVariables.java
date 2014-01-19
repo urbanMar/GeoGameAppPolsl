@@ -10,16 +10,17 @@ public class GlobalVariables {
     public static Boolean isInternet = true;
     public static Boolean isGps = true;
 
-    public static final  String baseUrl = "";
+    public static final  String baseUrl = "http://89.25.149.91:8080/";
 
-    private static final String userLogin = "/users/login-me/login/[USER_MAIL]/pass/[USER_PASS]";
-    private static final String userLogout = "/users/logout-me";
-    private static final String userRegister = "/users/register-me/login/[USER_LOGIN]/email/[USER_MAIL]/pass/[USER_PASS]";
-    private static final String userForgot = "/users/forgot-pass/email/[USER_MAIL]";
-    private static final String userInfo = "/users/get-user-info/email/[USER_MAIL]";
-    private static final String userEdit = "/users/edit-user/email/[USER_MAIL]";
-    private static final String taskStart = "/task/start/email/[USER_MAIL]";
-    private static final String taskEnd = "/task/end/email/[USER_MAIL]";
+    private static final String userLogin = "GeoGame/mobile/game/login/";
+    private static final String userLogout = "GeoGame/mobile/game/logout";
+    private static final String userRegister = "GeoGame/mobile/game/register";
+    private static final String userForgot = "GeoGame/mobile/game/reminder";
+    private static final String userSendCoordinates = "GeoGame/mobile/game/coords";
+    private static final String taskAnswear = "GeoGame/mobile/game/checkNode";
+
+    private static final String sendMsg = "GeoGame/mobile/messages/send";
+    private static final String getMsg = "GeoGame/mobile/messages/read?userId=[ID]&all=true";
 
     private static User user;
     private static Task task;
@@ -44,48 +45,44 @@ public class GlobalVariables {
         return baseUrl;
     }
 
-    public static String getUserLogin(String mail, String pass) {
+    public static String getUserLogin() {
 
-        String url = userLogin.replace("[USER_MAIL]", mail);
-        url = url.replace("[USER_PASS]", pass);
-
-        return getBaseUserUrl() + url;
+        return getBaseUserUrl() + userLogin;
     }
 
 
-    public static String getUserRegister(String login, String mail, String pass) {
+    public static String getUserRegister() {
 
-        String url = userRegister.replace("[USER_MAIL]", mail);
-        url = url.replace("[USER_PASS]", pass);
-        url = url.replace("[USER_LOGIN]", login);
-
-        return getBaseUserUrl() + url;
+        return getBaseUserUrl() + userRegister;
     }
 
 
 
-    public static String getUserForgot(String mail) {
+    public static String getUserForgot() {
 
-        return getBaseUserUrl() + userForgot.replace("[USER_MAIL]", mail);
+        return getBaseUserUrl() + userForgot;
     }
 
 
-    public static String getUserInfo() {
+    public static String getUserSendCoordinates() {
 
-        return getBaseUserUrl() + userInfo.replace("[USER_MAIL]", user.getMail());
+        return getBaseUserUrl() + userSendCoordinates;
     }
 
     public static String getUserLogout() {
-        return getBaseUserUrl() + userLogout.replace("[USER_MAIL]", user.getMail());
+        return getBaseUserUrl() + userLogout;
     }
 
-
-    public static String getUserEdit() {
-        return getBaseUserUrl() + userEdit.replace("[USER_MAIL]", user.getMail());
+    public static String getTaskAnswear() {
+        return getBaseUserUrl() + taskAnswear;
     }
 
-    public static String getTaskInfo() {
-        return getBaseUserUrl() + taskStart.replace("[USER_MAIL]", user.getMail());
+    public static String getSendMsg() {
+        return getBaseUserUrl() + sendMsg;
     }
 
+    public static String getGetMsg(String id) {
+        String url = getMsg.replace("[ID]", id);
+        return getBaseUserUrl() + url;
+    }
 }

@@ -1,22 +1,34 @@
 package pl.polsl.marurb.geoLocApp.activities;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.format.Time;
+import android.util.JsonReader;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.StatusLine;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.CookieStore;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.protocol.ClientContext;
+import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HTTP;
+import org.apache.http.protocol.HttpContext;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,15 +36,20 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 import pl.polsl.marurb.geoLocApp.R;
 import pl.polsl.marurb.geoLocApp.helpers.BaseActivity;
 import pl.polsl.marurb.geoLocApp.helpers.GlobalVariables;
 import pl.polsl.marurb.geoLocApp.items.Task;
+import pl.polsl.marurb.geoLocApp.items.User;
 
 public class StartGameActivity extends BaseActivity {
 
-
+    User user = GlobalVariables.getUser();
+    Task task = new Task();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,17 +66,23 @@ public class StartGameActivity extends BaseActivity {
 
     }
 
-    public void startGame(View view){
-        getTask();
+    private static List<NameValuePair> post = new ArrayList<NameValuePair>(2);
 
+    public void startGame(View view){
+        //getTask();
+
+        post.clear();
+        post.add(new BasicNameValuePair("email", user.getLogin()));
+        post.add(new BasicNameValuePair("pass", user.getPass()));
+
+        new postTask().execute(GlobalVariables.getUserLogin());
 
     }
 
     public void getTask(){
         Task task = new Task();
-        task.setName("Test task");
-        task.setDescription("asdasdasdasdasdasdasd" +
-                "asdasdadasda sdasdasdasd asdasdasd asd as da sd asdd\n sdfsdf");
+        task.setName("Test");
+        task.setDescription("2 + 2 *2 is equal");
         task.setLongitude("19.0248");
         task.setLatitude("50.2736");
 
@@ -72,82 +95,109 @@ public class StartGameActivity extends BaseActivity {
         //new HttpAsyncTask().execute(GlobalVariables.getTaskInfo());
     }
 
+    public static CookieStore cookieStore = new BasicCookieStore();
+    public static HttpContext localContext = new BasicHttpContext();
 
-    private static String convertInputStreamToString(InputStream inputStream) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
-        String line = "";
-        String result = "";
-        while((line = bufferedReader.readLine()) != null)
-            result += line;
+    class postTask extends AsyncTask<String, String, String> {
 
-        inputStream.close();
-        return result;
+        ProgressDialog progressDialog;
+        private long id;
+        private String maill;
 
-    }
-
-
-    private class HttpAsyncTask extends AsyncTask<String, Void, String> {
         @Override
-        protected String doInBackground(String... urls) {
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(StartGameActivity.this);
+            progressDialog.setMessage("Loading...");
+            progressDialog.show();
 
-            InputStream inputStream = null;
-            String result = "";
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            Calendar c = Calendar.getInstance();
+            task.setStartDate("" + c.getTime());
+            GlobalVariables.setTask(task);
+            progressDialog.dismiss();
+            Intent intent = new Intent(StartGameActivity.this, GameActivity.class);
+            startActivity(intent);
+
+
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            StringBuilder builder = new StringBuilder();
+            HttpClient client = new DefaultHttpClient();
+            HttpPost httpPost = new HttpPost(params[0]);
+
+
             try {
+                localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
+                httpPost.setEntity(new UrlEncodedFormEntity(post, HTTP.UTF_8));
 
-                // create HttpClient
-                HttpClient httpclient = new DefaultHttpClient();
 
-                // make GET request to the given URL
-                HttpResponse httpResponse = httpclient.execute(new HttpGet(urls[0]));
+                HttpResponse response = client.execute(httpPost, localContext);
+                //HttpResponse response = client.execute(httpPost);
+                StatusLine statusLine = response.getStatusLine();
 
-                // receive response as inputStream
-                inputStream = httpResponse.getEntity().getContent();
-
-                // convert inputstream to string
-                if(inputStream != null)
-                    result = convertInputStreamToString(inputStream);
-                else
-                    result = getText(R.string.server_problem).toString();
-
-            } catch (Exception e) {
+                int statusCode = statusLine.getStatusCode();
+                if (statusCode == 200) {
+                    HttpEntity entity = response.getEntity();
+                    InputStream content = entity.getContent();
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(content));
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        builder.append(line);
+                    }
+                } else {
+                    Log.e(JsonReader.class.toString(), "Failed to download file");
+                }
+            } catch (ClientProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
 
-            return result;
-        }
-        // onPostExecute displays the results of the AsyncTask.
-        @Override
-        protected void onPostExecute(String result) {
-            Task task = new Task();
-            JSONArray taskJ;
-            ////
-            ////
-            ////
-            ///
+            String response = builder.toString();
+
+            JSONObject out = new JSONObject();
 
             try {
-                JSONObject json = new JSONObject(result);
-                taskJ = json.getJSONArray("Task"); // get articles array
-                task.setName(taskJ.getJSONObject(0).getString("name"));
-                task.setDescription(taskJ.getJSONObject(0).getString("description"));
-                task.setId(Long.parseLong(taskJ.getJSONObject(0).getString("id")));
-                task.setLatitude(taskJ.getJSONObject(0).getString("latitude"));
-                task.setLongitude(taskJ.getJSONObject(0).getString("longitude"));
-
+                out = new JSONObject(response);
+                Log.d("User-model", out.toString());
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Time now = new Time();
-            now.setToNow();
-            task.setStartDate(now.toString());
+            try {
+                JSONObject userJ = out.getJSONObject("node");
+                System.out.println("!!! ID: " + userJ);
+                //System.out.println("!!! ID: " + userJ.getString("longitude"));
+                task.setLongitude(userJ.getString("longitude"));
+                task.setLatitude(userJ.getString("latitude"));
+                task.setName(userJ.getString("description"));
+                task.setDescription(userJ.getString("task"));
+                task.setId(userJ.getLong("id"));
+                System.out.println("!!! ID: " + userJ.getLong("id"));
 
-            Toast.makeText(getBaseContext(), getText(R.string.received), Toast.LENGTH_LONG).show();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
-            GlobalVariables.setTask(task);
-            Intent intent = new Intent(StartGameActivity.this, GameActivity.class);
-            startActivity(intent);
+
+            return  out.toString();
         }
     }
+
+
+
+
+
+
 
     @Override
     public void decorationDesigner() {

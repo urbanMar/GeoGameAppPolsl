@@ -1,6 +1,7 @@
 package pl.polsl.marurb.geoLocApp.activities.login;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +15,8 @@ import pl.polsl.marurb.geoLocApp.helpers.BaseActivity;
 
 
 public class MainLoginActivity extends BaseActivity{
+
+    public ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

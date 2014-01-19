@@ -17,6 +17,7 @@ import android.widget.TextView;
 import pl.polsl.marurb.geoLocApp.R;
 import pl.polsl.marurb.geoLocApp.activities.MessengerActivity;
 import pl.polsl.marurb.geoLocApp.activities.NoInternetActivity;
+import pl.polsl.marurb.geoLocApp.activities.TaskInfoActivity;
 import pl.polsl.marurb.geoLocApp.activities.login.UserInfoActivity;
 import pl.polsl.marurb.geoLocApp.interfaces.BaseInterface;
 import pl.polsl.marurb.geoLocApp.tools.gps.CheckGpsStatus;
@@ -67,7 +68,7 @@ public class BaseActivity extends Activity implements BaseInterface{
         headerInfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BaseActivity.this, UserInfoActivity.class);
+                Intent intent = new Intent(BaseActivity.this, TaskInfoActivity.class);
                 startActivity(intent);
             }
         });

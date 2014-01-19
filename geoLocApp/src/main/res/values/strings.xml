@@ -38,6 +38,19 @@
     <string name="answer">Answer</string>
     <string name="received">Task is received</string>
     <string name="server_problem">Server problems</string>
+    <string name="ok">OK</string>
+    <string name="login_problem">Wrong password or user</string>
+    <string name="no_game">No game right now, try later</string>
+    <string name="reg_error">Such user already exist</string>
+    <string name="id">ID:</string>
+    <string name="start_tim">Start time:</string>
+    <string name="curr_lon">Current longitude:</string>
+    <string name="curr_lat">Current latitude:</string>
+    <string name="task_lon">Task longitude:</string>
+    <string name="task_lat">Task latitude:</string>
+    <string name="wrong_answer">Wrong answer</string>
+
+
 
 
 </resources>
