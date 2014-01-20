@@ -7,11 +7,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import pl.polsl.marurb.geoLocApp.R;
 import pl.polsl.marurb.geoLocApp.helpers.BaseActivity;
+import pl.polsl.marurb.geoLocApp.helpers.GlobalVariables;
+import pl.polsl.marurb.geoLocApp.items.Task;
 
 public class TaskInfoActivity extends BaseActivity {
+
+    Task task;
+    TextView time;
+    TextView currLat;
+    TextView currLon;
+    TextView taskLat;
+    TextView taskLon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +35,25 @@ public class TaskInfoActivity extends BaseActivity {
         }
         decorationDesigner();
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        task = GlobalVariables.getTask();
+        time = (TextView)findViewById(R.id.taskInfoStartTimetextView);
+        currLat = (TextView)findViewById(R.id.taskInfoCurrLattextView);
+        currLon = (TextView)findViewById(R.id.taskInfoCurrLontextView);
+        taskLat = (TextView)findViewById(R.id.taskInfoTaskLattextView);
+        taskLon = (TextView)findViewById(R.id.taskInfoTaskLontextView);
+
+        time.setText(task.getStartDate());
+        currLat.setText(task.getCurrentLatitud());
+        currLon.setText(task.getCurrentLongitude());
+        taskLat.setText(task.getLatitude());
+        taskLon.setText(task.getLongitude());
+
+    }
+
 
     @Override
     public void decorationDesigner() {

@@ -265,7 +265,6 @@ public class GameActivity extends BaseActivity implements SensorEventListener, L
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            System.out.println("!!!!!!!!!!!!!POSZŁO");
         }
 
         @Override
