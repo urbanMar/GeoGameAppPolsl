@@ -46,4 +46,17 @@
         android:singleLine="true"
         android:typeface="normal"
         android:onClick="remindUser" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="..."
+        android:background="@android:color/transparent"
+        android:textColor="#0011ff"
+        android:id="@+id/servChange"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="servChenge" />
 </RelativeLayout>

@@ -1,80 +1,49 @@
-package pl.polsl.marurb.geoLocApp.activities.login;
+package pl.polsl.marurb.geoLocApp.helpers;
 
+import android.app.Activity;
 import android.app.Fragment;
-import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import pl.polsl.marurb.geoLocApp.R;
-import pl.polsl.marurb.geoLocApp.helpers.BaseActivity;
-import pl.polsl.marurb.geoLocApp.helpers.ServerChange;
 
+public class ServerChange extends Activity {
 
-public class MainLoginActivity extends BaseActivity{
-
-    public ProgressDialog dialog;
+    EditText servName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_login);
-
-
+        setContentView(R.layout.activity_server_change);
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
-
-        decorationDesigner();
-
     }
 
-    public void decorationDesigner(){
-        super.decorationDesigner();
-        headerTextView.setText(getText(R.string.title_activity_main_login));
-        headerMessengerButton.setVisibility(View.GONE);
-        headerInfoButton.setVisibility(View.GONE);
-        headerUserButton.setVisibility(View.GONE);
+    @Override
+    protected void onStart() {
+        super.onStart();
+        servName =  (EditText) findViewById(R.id.newServerNameEditText);
+        servName.setHint(GlobalVariables.getBaseUrl());
     }
-
-
-    public void loginUser(View view){
-        Intent intent = new Intent(MainLoginActivity.this, LoginActivity.class);
-        startActivity(intent);
+    public void changeServer(View view){
+        GlobalVariables.setBaseUrl(servName.getText().toString());
 
     }
-
-    public void registerUser(View view){
-        Intent intent = new Intent(MainLoginActivity.this, RegistryActivity.class);
-        startActivity(intent);
-
-    }
-
-    public void remindUser(View view){
-        Intent intent = new Intent(MainLoginActivity.this, RemindActivity.class);
-        startActivity(intent);
-
-    }
-    public void servChenge(View view){
-        Intent intent = new Intent(MainLoginActivity.this, ServerChange.class);
-        startActivity(intent);
-
-    }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_login, menu);
+        getMenuInflater().inflate(R.menu.server_change, menu);
         return true;
     }
 
@@ -90,8 +59,6 @@ public class MainLoginActivity extends BaseActivity{
         return super.onOptionsItemSelected(item);
     }
 
-
-
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -103,7 +70,7 @@ public class MainLoginActivity extends BaseActivity{
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main_login, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_server_change, container, false);
             return rootView;
         }
     }

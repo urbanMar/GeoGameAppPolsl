@@ -49,8 +49,6 @@
     <string name="task_lon">Task longitude:</string>
     <string name="task_lat">Task latitude:</string>
     <string name="wrong_answer">Wrong answer</string>
-
-
-
+    <string name="title_activity_server_change">ServerChange</string>
 
 </resources>

@@ -10,7 +10,7 @@ public class GlobalVariables {
     public static Boolean isInternet = true;
     public static Boolean isGps = true;
 
-    public static final  String baseUrl = "http://89.25.149.91:8080/";
+    public static  String baseUrl = "http://89.25.149.91:8080/";
 
     private static final String userLogin = "GeoGame/mobile/game/login/";
     private static final String userLogout = "GeoGame/mobile/game/logout";
@@ -84,5 +84,13 @@ public class GlobalVariables {
     public static String getGetMsg(String id) {
         String url = getMsg.replace("[ID]", id);
         return getBaseUserUrl() + url;
+    }
+
+    public static String getBaseUrl() {
+        return baseUrl;
+    }
+
+    public static void setBaseUrl(String baseUrl) {
+        GlobalVariables.baseUrl = baseUrl;
     }
 }
